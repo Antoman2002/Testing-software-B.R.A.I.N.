@@ -35,18 +35,20 @@ int mean(int samples, int correction)
 // main() runs in its own thread in the OS
 int main()
 {
+    // a small setup
     myTime.reset();
     myTime.start();
     while(echo == 2) {};
     green = 0;
     red = 0;
     correction = myTime.elapsed_time().count();
-
+    
     while(true){
         int afstand = distance(correction);
         int gemiddelde = mean(20, correction);
         printf("distance: %d cm // mean: %d\n\r", afstand, gemiddelde);
-
+        
+        //when the distance is below 5cm the claws need to close for 20 seconds. 
         if(gemiddelde <= 5){
             green = 1;
             ThisThread::sleep_for(1000ms);
