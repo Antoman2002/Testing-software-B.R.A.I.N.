@@ -7,6 +7,7 @@ DigitalOut red(D2);
 int correction = 0;
 Timer myTime;
 
+//Calculating the distance in cm using a small correction found in the beginning
 int distance(int correction)
 {
     trigger = 1;
@@ -22,6 +23,7 @@ int distance(int correction)
     return distance = (myTime.elapsed_time().count() - correction)/58.0;
 };
 
+//Calculating the mean of multiple values determined by samples
 int mean(int samples, int correction)
 {
     int mean = 0;
